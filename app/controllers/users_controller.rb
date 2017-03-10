@@ -14,6 +14,9 @@ class UsersController < ApplicationController
     else
       render "new"
     end
+    def edit 
+      @user = User.find(params[:id])
+    end
   end
   private
   def user_params
