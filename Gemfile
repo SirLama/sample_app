@@ -27,7 +27,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
- gem 'guard'
+ # gem 'guard'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
   gem 'bootstrap-sass','3.2.0.0'
@@ -44,6 +44,8 @@ end
 
 group :test do
     gem 'minitest-reporters'
+    gem 'mini_backtrace'
+    gem 'guard-minitest'
 end
 group :production do
 # Use Puma as the app server
