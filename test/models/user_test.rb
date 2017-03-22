@@ -1,7 +1,7 @@
 require 'test_helper'
 class UserTest < ActiveSupport::TestCase
   def setup
-    @user = User.new(name: "malach salama", email: "malach@yahoo.com", password: "foobar" , password_confirmation: "foobar")
+    @user = User.new(name: "malach", email: "malachy@yahoo.com", password: "foobar" , password_confirmation: "foobar")
   end
      test "name should not be too long" do
       @user.name = "a" * 51
@@ -36,12 +36,12 @@ class UserTest < ActiveSupport::TestCase
      test "authenticated? should return false for a user with nil digest" do
        assert_not  @user.authenticated?(:remember, '')
      end
-     # def authenticated?(remember_token)
-     #   return false if remember_digest.nil?
-     #   BCrypt::Password.new(remember_digest).is_password?(remember_token)
-     # end
+     test "associated microposts should be destroyed" do
+       # user=User.create!(name:"raw", email:"raw@gmail.com")
+       @user.save
+       @user.microposts.create!(content: "First tweet")
+       assert_difference 'Micropost.count', -1 do
+         @user.destroy
+       end
+    end
 end
-
-
-
-
